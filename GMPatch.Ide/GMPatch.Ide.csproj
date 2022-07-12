@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <CopyRetryCount>0</CopyRetryCount>
+        <!--
+        Used only to compile the runner. 
+        -->
+        <GameMakerFolder>Ide</GameMakerFolder>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="HarmonyX" Version="2.10.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="IDE" HintPath="$(TargetDir)stripped\IDE.dll">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="GameMaker-Beta" HintPath="$(TargetDir)stripped\GameMaker-Beta.dll" Private="true">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="Utils" HintPath="$(TargetDir)stripped\Utils.dll" Private="true">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="CorePlugins" HintPath="$(TargetDir)stripped\CorePlugins.dll" Private="true">
+            <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+
+    <Import Project="..\tools\GameMaker.props"/>
+
+</Project>

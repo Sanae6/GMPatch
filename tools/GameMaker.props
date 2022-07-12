@@ -1,0 +1,16 @@
+<Project>
+
+    <PropertyGroup>
+        <!-- Enter your compiler path here and change IDE path if applicable. -->
+        
+        <GmCompilerPath>C:/Users/Sanae/RiderProjects/RuntimeUnbundler/RuntimeUnbundler/bin/Debug/net7.0/runtime/bin/assetcompiler/windows/x64</GmCompilerPath>
+        <GmIdePath>C:/Program Files/GameMaker-Beta</GmIdePath>
+    </PropertyGroup>
+
+    <Target Name="StripLibs" BeforeTargets="BeforeResolveReferences">
+        <MakeDir Directories="$(TargetDir)stripped" />
+        <Exec Condition="$(GameMakerFolder) == 'Compiler'" Command="..\tools\NStrip.exe -n -p &quot;$(GmCompilerPath)&quot; $(TargetDir)stripped" StandardOutputImportance="Low" StandardErrorImportance="Low" IgnoreExitCode="true" />
+        <Exec Condition="$(GameMakerFolder) == 'Ide'" Command="..\tools\NStrip.exe -n -p &quot;$(GmIdePath)&quot; $(TargetDir)stripped" StandardOutputImportance="Low" StandardErrorImportance="Low" IgnoreExitCode="true" />
+    </Target>
+
+</Project>
